@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import logo from './logo.svg';
-import Novel from './components/Novel'
+import Novel from './components/Novel/Novel'
 import './App.css';
 
 class App extends Component {
@@ -30,7 +30,18 @@ class App extends Component {
   };
 
   store=createStore(
-    () => this.initialStore,
+    (state, action) => {
+      const { novels } = state;
+      switch (action.type) {
+        case 'CHANGE_FILTER':
+          return {
+            novels,
+            filter: action.filterType
+          }
+        default:
+          return state;
+      }
+    },
     this.initialStore
   );
 

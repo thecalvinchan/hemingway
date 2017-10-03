@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './Chapter.css';
+import React from 'react';
+import './chapter.css';
 
 const Chapter = ({ chapter }) => {
   const { title, date, content } = chapter;
