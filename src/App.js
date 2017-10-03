@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import logo from './logo.svg';
-import Novel from './components/Novel/Novel'
-import './App.css';
+import Novel from './components/Novel/Novel';
+import { filterTypes } from './components/Novel/constants';
+import './app.css';
 
 class App extends Component {
 
   initialStore = {
-    filter: 'all',
+    filter: filterTypes.FILTER_TYPE_ALL,
     novels: [
       {
         chapters: [
@@ -29,19 +29,22 @@ class App extends Component {
     ]
   };
 
+  static filterReducer = (state = filterTypes.FILTER_TYPE_ALL, action) => {
+    switch (action.type) {
+      case 'CHANGE_FILTER':
+        return action.filterType
+      default:
+        return state;
+    }
+  }
+
+  static novelsReducer = (state = []) => (state) 
+
   store=createStore(
-    (state, action) => {
-      const { novels } = state;
-      switch (action.type) {
-        case 'CHANGE_FILTER':
-          return {
-            novels,
-            filter: action.filterType
-          }
-        default:
-          return state;
-      }
-    },
+    combineReducers({
+      novels: App.novelsReducer,
+      filter: App.filterReducer
+    }),
     this.initialStore
   );
 
@@ -49,11 +52,8 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Calvin Chan</h1>
-          <p>
-            Creative Technologist
-          </p>
+          <h1>Calvin Chan</h1>
+          <p>Creative Technologist</p>
         </header>
         <Provider store={this.store}>
           <Novel/>

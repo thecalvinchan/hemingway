@@ -4,4 +4,6 @@ const filterTypes = {
   FILTER_TYPE_WORK: 'work'
 }
 
-export { filterTypes };
+export { 
+  filterTypes 
+};
