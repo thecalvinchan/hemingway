@@ -1,0 +1,21 @@
+.chapter {
+  display: block;
+  margin: 0 auto 30px 0;
+  width: 800px;
+}
+
+.chapter-header {
+  align-items: baseline;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+}
+
+.chapter-header h2 {
+  font-size: 1.4em;
+  font-weight: 800;
+}
+
+.chapter-content {
+  text-align: left;
+}

@@ -4,7 +4,7 @@ import { filterTypes } from './constants';
 
 import Chapter from '../Chapter/Chapter'
 import { changeFilterAction } from './actions';
-import './novel.css';
+import './style.css';
 
 const mapStateToProps = (store) => {
   // TODO: create Novels container component

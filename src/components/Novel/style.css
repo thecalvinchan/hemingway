@@ -1,0 +1,17 @@
+.novel {
+  position:absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  margin: 0 auto;
+  width: 800px;
+}
+
+.novel nav {
+  text-align: center
+}
+
+.novel nav a {
+  margin: 0 10px;
+}

@@ -3,6 +3,7 @@ import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import Novel from './components/Novel/Novel';
 import { filterTypes } from './components/Novel/constants';
+import { filterReducer, novelsReducer } from './components/Novel/reducers';
 import './app.css';
 
 class App extends Component {
@@ -29,29 +30,18 @@ class App extends Component {
     ]
   };
 
-  static filterReducer = (state = filterTypes.FILTER_TYPE_ALL, action) => {
-    switch (action.type) {
-      case 'CHANGE_FILTER':
-        return action.filterType
-      default:
-        return state;
-    }
-  }
-
-  static novelsReducer = (state = []) => (state) 
-
-  store=createStore(
+  store = createStore(
     combineReducers({
-      novels: App.novelsReducer,
-      filter: App.filterReducer
+      novels: novelsReducer,
+      filter: filterReducer
     }),
     this.initialStore
   );
 
   render() {
     return (
-      <div className="App">
-        <header>
+      <div className="app">
+        <header className="app-header">
           <h1>Calvin Chan</h1>
           <p>Creative Technologist</p>
         </header>
