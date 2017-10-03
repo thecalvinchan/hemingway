@@ -1,2 +1,0 @@
-web: python -m SimpleHTTPServer 1337
-styles: compass watch
