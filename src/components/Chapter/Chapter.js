@@ -1,4 +1,6 @@
 import React from 'react';
+import moment from 'moment';
+
 import './style.css';
 
 const Chapter = ({ chapter }) => {
@@ -7,7 +9,7 @@ const Chapter = ({ chapter }) => {
     <article className="chapter">
       <header className="chapter-header">
         <h2>{ title }</h2>
-        <h3>{ date }</h3>
+        <h3>{ moment(date).format('MMMM YYYY') }</h3>
       </header>
       <p className="chapter-content">{ content }</p>
     </article>

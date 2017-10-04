@@ -1,6 +1,5 @@
 /* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
+   v2.0 | 20110126   License: none (public domain)
 */
 
 html, body, div, span, applet, object, iframe,
@@ -59,7 +58,7 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 2.75rem;
   font-weight: 800;
 }
 
@@ -68,15 +67,43 @@ p {
 }
 
 .app {
-  width: 100%;
-  height: 100%;
-}
-
-.app-header {
   text-align: center;
   text-transform: lowercase;
   position: absolute;
   top: 50%;
   left: 50%;  
   transform: translateX(-50%) translateY(-50%);
+}
+
+.app-header {
+  margin-bottom: 10px;
+}
+
+.app-nav {
+  text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.app-nav a {
+  margin: 0 5px;
+  color: #000;
+  background: none;
+  padding: 10px;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border: 2px solid #000;
+}
+
+.app-nav a:hover {
+  color: #fff;
+  border: 2px solid #000;
+  background-color: #000;
+}
+
+.app-nav a i {
+  font-size: 20px;
+  line-height: 20px;
 }

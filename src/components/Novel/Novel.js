@@ -4,32 +4,31 @@ import { filterTypes } from './constants';
 
 import Chapter from '../Chapter/Chapter'
 import { changeFilterAction } from './actions';
+import { getNovelChaptersVisible } from './selectors';
 import './style.css';
 
-const mapStateToProps = (store) => {
+const mapStateToProps = (store, ownProps) => {
   // TODO: create Novels container component
   return {
-    filter: store.filter,
-    novel: store.novels[0]
+    chapters: getNovelChaptersVisible(store, ownProps)
   }
 }
 
-const Novel = ( { filter, novel, changeFilterAction } ) => {
-  const { chapters } = novel;
-  const visibleChapters = chapters.filter((chapter) => {
-    if (filter === filterTypes.FILTER_TYPE_ALL) {
-      return true;
+const Novel = ( { chapters, changeFilterAction } ) => {
+  const onClickFilter = (filterType) => {
+    return (e) => {
+      e.preventDefault();
+      return changeFilterAction(filterType)
     }
-    return chapter.type === filter;
-  });
+  }
   return (
     <section className="novel">
       <nav>
-        <a href="#" onClick={() => {changeFilterAction(filterTypes.FILTER_TYPE_ALL)}}>all</a>
-        <a href="#" onClick={() => {changeFilterAction(filterTypes.FILTER_TYPE_EDUCATION)}}>education</a>
-        <a href="#" onClick={() => {changeFilterAction(filterTypes.FILTER_TYPE_WORK)}}>work</a>
+        <a href="#" onClick={ onClickFilter(filterTypes.FILTER_TYPE_ALL) }>all</a>
+        <a href="#" onClick={ onClickFilter(filterTypes.FILTER_TYPE_EDUCATION) }>education</a>
+        <a href="#" onClick={ onClickFilter(filterTypes.FILTER_TYPE_WORK) }>work</a>
       </nav>
-      {visibleChapters.map((chapter) => (
+      {chapters.map((chapter) => (
         <Chapter 
           chapter={chapter}
         />

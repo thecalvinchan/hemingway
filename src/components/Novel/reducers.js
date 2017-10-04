@@ -1,6 +1,7 @@
 import { filterTypes } from './constants';
 
 const filterReducer = (state = filterTypes.FILTER_TYPE_ALL, action) => {
+  console.log(action);
   switch (action.type) {
     case 'CHANGE_FILTER':
       return action.filterType
@@ -9,9 +10,9 @@ const filterReducer = (state = filterTypes.FILTER_TYPE_ALL, action) => {
   }
 }
 
-const novelsReducer = (state = []) => (state) 
+const entitiesReducer = (state = {}) => (state) 
 
 export {
   filterReducer,
-  novelsReducer
+  entitiesReducer
 }
